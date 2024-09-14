@@ -39,4 +39,4 @@ async def roll(ctx, dice: str):
     await ctx.send(result)
 
 
-bot.run("MTI4MTc3OTgxMDA1NzU4ODc2Nw.GhFjB9.AX3Y8llDAQ8EjOJZmCiekYPNS0zMTE76u1YBqs")
+bot.run("")
