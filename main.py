@@ -3,6 +3,7 @@ import random
 from discord.ext import commands
 from bot_logic import gen_pass
 from bot_emodji import gen_emodji
+import os
 # La variable intents almacena los privilegios del bot
 intents = discord.Intents.default()
 # Activar el privilegio de lectura de mensajes
@@ -37,6 +38,27 @@ async def roll(ctx, dice: str):
 
     result = ', '.join(str(random.randint(1, limit)) for r in range(rolls))
     await ctx.send(result)
+    
+@bot.command()
+async def repeat(ctx, times: int, content='repeating...'):
+    for i in range(times):
+        await ctx.send(content)
+@bot.command()
+async def mem(ctx):
+    with open('images/mem1.jpg', 'rb') as f:
+        # ¡Vamos a almacenar el archivo de la biblioteca Discord convertido en esta variable!
+        picture = discord.File(f)
+    # A continuación, podemos enviar este archivo como parámetro.
+    await ctx.send(file=picture)
+
+@bot.command()
+async def mem_aleatorio(ctx):
+    meme_aleatorio=random.choice(os.listdir("images"))
+    with open(f'images/{meme_aleatorio}', 'rb') as f:
+        # ¡Vamos a almacenar el archivo de la biblioteca Discord convertido en esta variable!
+        picture = discord.File(f)
+    # A continuación, podemos enviar este archivo como parámetro.
+    await ctx.send(file=picture)
 
 
 bot.run("")
